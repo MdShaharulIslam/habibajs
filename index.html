@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Wishes</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffebf0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .heart {
+            color: red;
+            font-size: 50px;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .bubble {
+            position: absolute;
+            background: pink;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-50px); opacity: 0.5; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+        .btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #ff4081;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #e91e63;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Assalamualykum, Habiba! ❤️</h2>
+        <p>You are my love, my heart, my everything.</p>
+        <div class="heart">❤️</div>
+        <button class="btn" onclick="showModal()">Click for Surprise</button>
+    </div>
+    
+    <div class="modal" id="modal">
+        <h3>Surprise! 💖</h3>
+        <p>"My dearest Habiba, you are my heart’s greatest joy, my best friend, and my forever love. Every day with you is a blessing, and I cherish every moment we share. Thank you for being the love of my life, my strength, and my happiness. I love you more than words can ever express!"
+
+        </p>
+        <button class="btn" onclick="closeModal()">Close</button>
+    </div>
+    
+    <audio id="loveSong" controls>
+        <source src="love.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        function showModal() {
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("loveSong").play();
+            createBubbles();
+        }
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            document.getElementById("loveSong").pause();
+        }
+        function createBubbles() {
+            for (let i = 0; i < 10; i++) {
+                let bubble = document.createElement("div");
+                bubble.classList.add("bubble");
+                document.body.appendChild(bubble);
+                let size = Math.random() * 50 + 10;
+                bubble.style.width = size + "px";
+                bubble.style.height = size + "px";
+                bubble.style.left = Math.random() * window.innerWidth + "px";
+                bubble.style.top = window.innerHeight + "px";
+                bubble.style.animationDuration = Math.random() * 3 + 2 + "s";
+                setTimeout(() => bubble.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>
